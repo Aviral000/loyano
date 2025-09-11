@@ -1,0 +1,13 @@
+{
+  "name": "loyano-website",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:home": "npm run dev --workspace=@loyano/home",
+    "build:home": "npm run build --workspace=@loyano/home",
+    "start:home": "npm run start --workspace=@loyano/home"
+  }
+} 
