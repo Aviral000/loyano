@@ -1,6 +1,7 @@
 import HeroBackground from "./hero/HeroBackground";
 import HeroContent from "./hero/HeroContent";
 import FabricTutorial from "./hero/FabricTutorial";
+import Chatbot from "./chatbot/Chatbot";
 
 export default function Hero() {
   return (
@@ -8,6 +9,7 @@ export default function Hero() {
       <HeroBackground />
       <HeroContent />
       <FabricTutorial />
+      <Chatbot />
     </section>
   );
 } 
