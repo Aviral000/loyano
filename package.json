@@ -16,12 +16,6 @@
     "audit:fix:home": "npm run audit:fix --workspace=@loyano/home",
     "analyze:home": "npm run analyze --workspace=@loyano/home"
   },
-  "dependencies": {
-    "@testing-library/react": "^16.3.0"
-  },
-  "devDependencies": {
-    "@testing-library/react": "^16.3.0"
-  },
   "lint-staged": {
     "apps/*": [
       "npm run lint:fix --workspace=@loyano/home",
