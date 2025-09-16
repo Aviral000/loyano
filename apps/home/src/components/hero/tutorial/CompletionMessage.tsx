@@ -26,7 +26,7 @@ export default function CompletionMessage({ countdown, onSkip, onRestart }: Comp
           Tutorial Complete! ✅
         </h3>
         <p className="text-slate-600 mb-4">
-          You've discovered our premium Italian fabrics with cutting-edge protection technology. 
+          You&apos;ve discovered our premium Italian fabrics with cutting-edge protection technology. 
           Experience the future of luxury wearables.
         </p>
         
