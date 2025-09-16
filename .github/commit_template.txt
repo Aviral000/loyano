@@ -1,0 +1,34 @@
+# <type>(<scope>): <subject>
+#
+# <body>
+#
+# <footer>
+
+# Type should be one of the following:
+# * feat: A new feature
+# * fix: A bug fix
+# * update: General update
+# * update-design: Design/UI update
+# * refactor: Code refactoring
+# * docs: Documentation update
+# * style: Code style changes
+# * test: Adding or updating tests
+# * chore: Maintenance tasks
+# * ci: CI/CD changes
+# * perf: Performance improvements
+# * build: Build system changes
+# * revert: Reverting previous changes
+#
+# Scope is optional and should be the area of the codebase affected
+# Subject should be a brief description of the change
+# Body should provide more detailed explanation if needed
+# Footer should contain any breaking changes or issue references
+#
+# Example:
+# feat(chatbot): add auto-close functionality after account creation
+#
+# - Added 3-second countdown timer
+# - Implemented cancel auto-close option
+# - Updated UI to show countdown in header
+#
+# Closes #123

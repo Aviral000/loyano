@@ -27,6 +27,7 @@ export default function ChatbotButton() {
             ? 'none' 
             : '0 0 20px rgba(192, 132, 252, 0.3), 0 0 40px rgba(192, 132, 252, 0.2)'
         }}
+        type="button"
       >
         <img
           alt="LOYANO Logo"
