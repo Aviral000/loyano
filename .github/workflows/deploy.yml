@@ -1,0 +1,91 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+          - production
+          - staging
+
+jobs:
+  deploy:
+    name: Deploy to ${{ github.event.inputs.environment || 'production' }}
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment || 'production' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: apps/home/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          cd apps/home
+          npm ci
+
+      - name: Run tests
+        run: |
+          cd apps/home
+          npm run test -- --coverage --watchAll=false
+
+      - name: Build application
+        run: |
+          cd apps/home
+          npm run build
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: apps/home
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+
+      - name: Deploy to GitHub Pages (Alternative)
+        if: github.event.inputs.environment == 'staging'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: apps/home/out
+          destination_dir: staging
+
+      - name: Notify deployment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const environment = '${{ github.event.inputs.environment || 'production' }}';
+            const deploymentUrl = 'https://loyano.vercel.app';
+            
+            const comment = `## 🚀 Deployment Successful
+            
+            **Environment**: ${environment}
+            **Status**: ✅ Deployed successfully
+            **URL**: ${deploymentUrl}
+            **Commit**: ${context.sha}
+            **Branch**: ${context.ref.replace('refs/heads/', '')}
+            
+            ---
+            *Deployment completed at ${new Date().toISOString()}*`;
+
+            // Create deployment status
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: context.payload.deployment?.id || 1,
+              state: 'success',
+              description: `Deployed to ${environment}`,
+              environment_url: deploymentUrl
+            });

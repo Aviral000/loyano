@@ -1,0 +1,50 @@
+name: Security Audit
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+  schedule:
+    # Run security audit daily at 2 AM UTC
+    - cron: '0 2 * * *'
+
+jobs:
+  security-audit:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false || github.event_name == 'push' || github.event_name == 'schedule'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: apps/home/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          cd apps/home
+          npm ci
+
+      - name: Run security audit
+        run: |
+          cd apps/home
+          npm audit --audit-level=moderate
+
+      - name: Check for known vulnerabilities
+        run: |
+          cd apps/home
+          npx audit-ci --config audit-ci.json
+
+      - name: Upload security report
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: security-audit-report
+          path: apps/home/audit-results.json
+          retention-days: 30
