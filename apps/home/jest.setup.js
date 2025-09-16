@@ -4,6 +4,7 @@
 // Used for __tests__/testing-library.js
 // Learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom'
+import React from 'react'
 
 // Mock Next.js router
 jest.mock('next/router', () => ({
@@ -52,9 +53,21 @@ jest.mock('next/navigation', () => ({
 // Mock Framer Motion
 jest.mock('framer-motion', () => ({
   motion: {
-    div: 'div',
-    button: 'button',
-    span: 'span',
+    div: ({ children, ...props }) => {
+      // Filter out Framer Motion props
+      const { whileHover, whileTap, initial, animate, exit, transition, ...restProps } = props
+      return React.createElement('div', restProps, children)
+    },
+    button: ({ children, ...props }) => {
+      // Filter out Framer Motion props
+      const { whileHover, whileTap, initial, animate, exit, transition, ...restProps } = props
+      return React.createElement('button', restProps, children)
+    },
+    span: ({ children, ...props }) => {
+      // Filter out Framer Motion props
+      const { whileHover, whileTap, initial, animate, exit, transition, ...restProps } = props
+      return React.createElement('span', restProps, children)
+    },
   },
   AnimatePresence: ({ children }) => children,
 }))
