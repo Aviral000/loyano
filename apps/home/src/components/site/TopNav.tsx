@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -48,10 +49,11 @@ export default function TopNav() {
 												>
 													{main.featured?.image ? (
 														<>
-															<img 
+															<Image 
 																src={main.featured.image} 
 																alt={main.featured.title}
-																className="absolute inset-0 w-full h-full object-cover"
+																fill
+																className="object-cover"
 															/>
 															<div className="absolute inset-0 bg-black/40"></div>
 															<div className="relative z-10 text-white">

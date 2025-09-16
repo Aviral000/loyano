@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function HeroBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden">
@@ -13,9 +15,11 @@ export default function HeroBackground() {
           {/* Main fabric panel with 3D depth */}
           <div className="absolute inset-0 rounded-3xl shadow-2xl transform rotate-2 translate-z-8 overflow-hidden" 
                style={{transform: 'rotateX(15deg) rotateY(30deg) translateZ(25px)'}}>
-            <img 
+            <Image 
               src="/images/italian-linen-fabric.jpeg" 
               alt="Premium Italian Linen Fabric"
+              width={224}
+              height={288}
               className="w-full h-full object-cover scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-br from-amber-800/10 to-slate-900/20"></div>
@@ -59,9 +63,11 @@ export default function HeroBackground() {
           {/* Main fabric panel with 3D depth */}
           <div className="absolute inset-0 rounded-3xl shadow-2xl transform rotate-3 translate-z-6 overflow-hidden" 
                style={{transform: 'rotateX(-20deg) rotateY(-35deg) translateZ(20px)'}}>
-            <img 
+            <Image 
               src="/images/italian-women-fabric.webp" 
               alt="Premium Italian Women's Fabric"
+              width={192}
+              height={256}
               className="w-full h-full object-cover scale-110"
             />
           </div>
