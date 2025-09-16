@@ -35,7 +35,7 @@ export default function ChatbotButton() {
           width={32}
           height={32}
           className="w-8 h-8"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk68DxCnyDY-waBTEqWn0Uv7EUTZnjrVidfdg-CEGD0L5cdi9DdGTsKjMQudWEQ_CyB6AKEb49zAZHoahT_xz10eeNu6Zu5YVkG_Z66_gOeROiDRFRE9Q8N3zEaD8ifNLuqeP1Ba4r0HmMC3tuU9IBzIWdYIe3cHR_ZrE6E2u9EpmHopTNWXaMDVYcy3WRgw8QwmqJIGkH4jpf-fyMOo58-klhucOkHHLvPNxy0FihHcU8wFZiojgFf_osjYlJCYXqE9FNH_eDBw"
+          src="/images/Summer-mens.jpg"
         />
       </motion.button>
     </motion.div>
