@@ -9,7 +9,7 @@ export const NAV: NavConfig = [
 			title: "Just In",
 			description: "Discover the latest arrivals for this season.",
 			href: "/",
-			image: "https://static.nextdirect.com/resource/blob/998114/c087b788cdabef39d18a6bb72c8bf4b1/date-hero-mens-mb-data.jpg"
+			image: "/images/Summer-mens.jpg"
 		},
 		sub: [
 			{ title: "Trending", href: "/", types: [
@@ -29,7 +29,7 @@ export const NAV: NavConfig = [
 				{ label: "Boots", href: "/" }
 			] },
 			{ title: "Accessories", href: "/", types: [
-				{ label: "Wearables", href: "/" },
+				{ label: "Wearables", href: "/product/1" },
 				{ label: "Bags", href: "/" },
 				{ label: "Caps & Hats", href: "/" }
 			] }
@@ -58,7 +58,7 @@ export const NAV: NavConfig = [
 				{ label: "Lifestyle", href: "/" }
 			] },
 			{ title: "Accessories", href: "/", types: [
-				{ label: "Wearables", href: "/" },
+				{ label: "Wearables", href: "/product/1" },
 				{ label: "Socks", href: "/" },
 				{ label: "Bags", href: "/" }
 			] },
@@ -92,7 +92,7 @@ export const NAV: NavConfig = [
 				{ label: "Boots", href: "/" }
 			] },
 			{ title: "Accessories", href: "/", types: [
-				{ label: "Wearables", href: "/" },
+				{ label: "Wearables", href: "/product/1" },
 				{ label: "Hats", href: "/" },
 				{ label: "Bags", href: "/" }
 			] },
@@ -158,7 +158,7 @@ export const NAV: NavConfig = [
 				{ label: "Footwear", href: "/" }
 			] },
 			{ title: "Accessories", href: "/", types: [
-				{ label: "Wearables", href: "/" },
+				{ label: "Wearables", href: "/product/1" },
 				{ label: "Bags", href: "/" }
 			] }
 		]

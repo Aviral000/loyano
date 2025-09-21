@@ -8,6 +8,21 @@
   "scripts": {
     "dev:home": "npm run dev --workspace=@loyano/home",
     "build:home": "npm run build --workspace=@loyano/home",
-    "start:home": "npm run start --workspace=@loyano/home"
+    "start:home": "npm run start --workspace=@loyano/home",
+    "test:home": "npm run test --workspace=@loyano/home",
+    "test:watch:home": "npm run test:watch --workspace=@loyano/home",
+    "test:coverage:home": "npm run test:coverage --workspace=@loyano/home",
+    "audit:home": "npm run audit --workspace=@loyano/home",
+    "audit:fix:home": "npm run audit:fix --workspace=@loyano/home",
+    "analyze:home": "npm run analyze --workspace=@loyano/home"
+  },
+  "lint-staged": {
+    "apps/*": [
+      "npm run lint:fix --workspace=@loyano/home",
+      "npm run test:watch --workspace=@loyano/home",
+      "npm run test:coverage --workspace=@loyano/home",
+      "npm run audit:fix --workspace=@loyano/home",
+      "npm run analyze --workspace=@loyano/home"
+    ]
   }
-} 
+}
