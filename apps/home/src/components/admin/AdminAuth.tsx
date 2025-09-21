@@ -19,7 +19,8 @@ export default function AdminAuth({ children }: AdminAuthProps) {
 
   // Check if already authenticated on mount
   useEffect(() => {
-    const authStatus = localStorage.getItem("admin_authenticated")
+    const sessionKey = process.env.NEXT_PUBLIC_ADMIN_SESSION_KEY || "admin_authenticated"
+    const authStatus = localStorage.getItem(sessionKey)
     if (authStatus === "true") {
       setIsAuthenticated(true)
     }
@@ -34,9 +35,12 @@ export default function AdminAuth({ children }: AdminAuthProps) {
     await new Promise(resolve => setTimeout(resolve, 1000))
 
     // Simple password check - in production, this would be server-side
-    if (password === "LOYANO_ADMIN_2024") {
+    const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD
+    const sessionKey = process.env.NEXT_PUBLIC_ADMIN_SESSION_KEY
+    
+    if (password === adminPassword) {
       setIsAuthenticated(true)
-      localStorage.setItem("admin_authenticated", "true")
+      localStorage.setItem(sessionKey as string, "true")
     } else {
       setError("Invalid admin credentials")
     }
@@ -46,7 +50,8 @@ export default function AdminAuth({ children }: AdminAuthProps) {
 
   const handleLogout = () => {
     setIsAuthenticated(false)
-    localStorage.removeItem("admin_authenticated")
+    const sessionKey = process.env.NEXT_PUBLIC_ADMIN_SESSION_KEY || "admin_authenticated"
+    localStorage.removeItem(sessionKey)
     setPassword("")
   }
 
@@ -111,7 +116,7 @@ export default function AdminAuth({ children }: AdminAuthProps) {
             <div className="mt-6 p-4 bg-blue-50 rounded-md">
               <p className="text-xs text-blue-800">
                 <strong>Demo Credentials:</strong><br />
-                Password: LOYANO_ADMIN_2024
+                Password: LOYANO_ADMIN_2025
               </p>
             </div>
           </CardContent>
