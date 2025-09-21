@@ -106,6 +106,11 @@ export default function TopNav() {
 						))}
 						<NavigationMenuItem>
 							<NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+								<Link href="/cart">Cart</Link>
+							</NavigationMenuLink>
+						</NavigationMenuItem>
+						<NavigationMenuItem>
+							<NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
 								<Link href="/">All</Link>
 							</NavigationMenuLink>
 						</NavigationMenuItem>
