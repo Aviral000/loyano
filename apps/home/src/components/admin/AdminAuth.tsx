@@ -19,8 +19,8 @@ export default function AdminAuth({ children }: AdminAuthProps) {
 
   // Check if already authenticated on mount
   useEffect(() => {
-    const sessionKey = process.env.NEXT_PUBLIC_ADMIN_SESSION_KEY || "admin_authenticated"
-    const authStatus = localStorage.getItem(sessionKey)
+    const sessionKey = process.env.NEXT_PUBLIC_ADMIN_SESSION_KEY  
+    const authStatus = localStorage.getItem(sessionKey as string)
     if (authStatus === "true") {
       setIsAuthenticated(true)
     }
@@ -50,8 +50,8 @@ export default function AdminAuth({ children }: AdminAuthProps) {
 
   const handleLogout = () => {
     setIsAuthenticated(false)
-    const sessionKey = process.env.NEXT_PUBLIC_ADMIN_SESSION_KEY || "admin_authenticated"
-    localStorage.removeItem(sessionKey)
+    const sessionKey = process.env.NEXT_PUBLIC_ADMIN_SESSION_KEY
+    localStorage.removeItem(sessionKey as string)
     setPassword("")
   }
 
