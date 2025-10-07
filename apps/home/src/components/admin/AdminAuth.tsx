@@ -128,17 +128,6 @@ export default function AdminAuth({ children }: AdminAuthProps) {
   return (
     <div>
       {children}
-      {/* Logout button - hidden but accessible */}
-      <div className="fixed bottom-4 right-4">
-        <Button
-          onClick={handleLogout}
-          variant="outline"
-          size="sm"
-          className="opacity-50 hover:opacity-100"
-        >
-          Logout
-        </Button>
-      </div>
     </div>
   )
 }

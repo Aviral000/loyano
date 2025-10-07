@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Sidebar,
   SidebarContent,
@@ -11,6 +13,7 @@ import {
 import { LayoutDashboard, ShoppingCart, Users, Package, BarChart3, Settings, LogOut } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation"
 
 interface MenuItem {
   title: string
@@ -52,6 +55,17 @@ const menuItems: MenuItem[] = [
 ]
 
 export function AdminSidebar() {
+  const router = useRouter()
+
+  const handleLogout = () => {
+    // Clear authentication
+    const sessionKey = process.env.NEXT_PUBLIC_ADMIN_SESSION_KEY || "admin_authenticated"
+    localStorage.removeItem(sessionKey)
+    
+    // Redirect to home page
+    router.push("/")
+  }
+
   return (
     <Sidebar className="border-r">
       <SidebarContent>
@@ -74,7 +88,11 @@ export function AdminSidebar() {
       </SidebarContent>
 
       <SidebarFooter>
-        <Button variant="ghost" className="w-full justify-start gap-3 text-gray-600">
+        <Button 
+          variant="ghost" 
+          className="w-full justify-start gap-3 text-gray-600"
+          onClick={handleLogout}
+        >
           <LogOut className="h-4 w-4" />
           Logout
         </Button>

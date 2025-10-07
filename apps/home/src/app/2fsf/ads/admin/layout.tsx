@@ -7,12 +7,8 @@ export default function AdminLayoutWrapper({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen font-sans antialiased bg-white text-gray-900">
-        <AdminAuth>
-          <AdminLayout>{children}</AdminLayout>
-        </AdminAuth>
-      </body>
-    </html>
+    <AdminAuth>
+      <AdminLayout>{children}</AdminLayout>
+    </AdminAuth>
   )
 }
